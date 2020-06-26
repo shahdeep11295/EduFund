@@ -20,10 +20,6 @@ export default function (state = { alluser: [] }, action) {
                 ...state,
                 alluser: p
             }
-        // return {
-        //     ...state,
-        //     alluser: action.payload,
-        // }
         default:
             return state
     }

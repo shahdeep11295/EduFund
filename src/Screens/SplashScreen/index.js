@@ -47,15 +47,12 @@ class SplashScreen extends React.Component {
 
     componentDidMount = async () => {
         console.log("start");
-        // user => { 
-        //     return firebase.auth().onAuthStateChanged(user)}
         const logged = await AsyncStorage.getItem('logged');
         console.log("logged",logged);
         
         setTimeout(() => {
             console.log("splash_Screen");
             this.props.navigation.navigate(logged !== '1' ? 'UserStack' : 'HomeStack');
-            //this.props.navigation.navigate('Signin')
         }, 5000);
     }
 

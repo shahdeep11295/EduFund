@@ -10,7 +10,9 @@ import {
     UPDATE_USER
 } from '../utils/constant';
 import { config } from "../utils/config"
-import { v4 as uuidv4 } from 'uuid';
+import 'react-native-get-random-values';
+import uuid from "react-native-uuid";
+
 
 export const loadingOn = (dispatch) => {
     dispatch({
@@ -27,7 +29,8 @@ export const loadingOff = (dispatch) => {
 export const saveUser = (userdata, callback = () => { }) => async (dispatch, getState) => {
     loadingOn(dispatch)
     try {
-        const id = uuidv4();
+        // const id = uuidv4();
+        const id = uuid.v1();
         console.log("id", id);
         firebase
             .auth()

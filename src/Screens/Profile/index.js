@@ -81,10 +81,8 @@ class Profile extends React.Component {
             "pwd":pwd,
             "uuid":uuid
         }
-        //this.props.user_update(data)
         const result = await this.props.user_update(data)
         this.setState({ edit: false })
-        // if (result.status === 200) { this.setState({ edit: false })}
         
     }
 
