@@ -119,8 +119,6 @@ export const getProduct_Details = (code, callback = () => { }) => async (dispatc
 export const getallUser = () => async (dispatch, getState) => {
     loadingOn(dispatch)
     try {
-        const id = uuidv4();
-        console.log("id", id);
         firebase
             .firestore()
             .collection('users')
