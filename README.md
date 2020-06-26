@@ -1,5 +1,8 @@
 ## 🚀 React Native EduFund
 
+[![React Native](https://img.shields.io/badge/React%20Native-v0.61.5-blue.svg)](https://facebook.github.io/react-native/)
+[![React Navigation V2](https://img.shields.io/badge/React%20Navigation-v5.6.0-blue.svg)](https://reactnavigation.org/)
+
 ## Features
 
 * [React Navigation](https://reactnavigation.org/)
