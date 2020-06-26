@@ -65,11 +65,10 @@ class Signin extends React.Component {
                     maxLength={15}
                     secureTextEntry={true}
                 />
-                <Button
-                    color="#3740FE"
-                    title="Signin"
-                    onPress={() => this.registerUser()}
-                />
+                <TouchableOpacity onPress={() => this.registerUser()}
+                style={{backgroundColor:"#3740FE",width: '100%',justifyContent:"center",alignItems:"center",height:scale(40)}}>
+                    <Text style={{color: '#FFF',}}>Signin</Text>
+                </TouchableOpacity>
 
                 <TouchableOpacity
                     onPress={() => this.props.navigation.navigate('Signup')}>

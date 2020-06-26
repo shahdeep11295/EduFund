@@ -4,7 +4,7 @@ import { scale, moderateScale, verticalScale } from '../../components/Scale';
 import AsyncStorage from '@react-native-community/async-storage';
 import data from "../../Json/data.json"
 import { connect } from 'react-redux';
-import { getProduct_Details } from '../../Action'
+import { getProduct_Details,getallUser } from '../../Action'
 
 class Home extends React.Component {
     constructor(props) {
@@ -18,15 +18,13 @@ class Home extends React.Component {
 
     componentDidMount() {
         console.log("data", data);
-
+        this.props.getallUser()
     }
     componentWillMount() {
         BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
       }
     
       componentWillUnmount() {
-    
-        //this.listener.remove();
         BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
       }
       handleBackButtonClick = () => {
@@ -66,6 +64,7 @@ class Home extends React.Component {
         const result = await this.props.getProduct_Details(item)
         console.log("result", result);
         if(result.status=== 200){
+            this.setState({text: '',collection: data})
         this.props.navigation.navigate('Product_Details',{
                                     code: item.code,})}
     }
@@ -132,10 +131,8 @@ function mapStateToProps(state) {
         userdata: state.register.userdata,
         loder: state.loder,
         productdata: state.product.productdata,
-        //graphdata: customiseGraphdata(state.product.productdata.data)
+        alluser: state.getalluser.alluser
     }
 }
 
-export default connect(mapStateToProps, { getProduct_Details })(Home)
-
-// export default Home;
+export default connect(mapStateToProps, { getProduct_Details,getallUser })(Home)

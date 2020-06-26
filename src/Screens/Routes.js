@@ -22,18 +22,6 @@ import Product_Details from "./Product_Details"
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
-const Signout = async () => {
-    console.log("dxqa");
-
-    await AsyncStorage.removeItem('logged');
-    console.log("sdaxa");
-
-    firebase.auth().signOut()
-    console.log(":");
-
-    return this.props.navigation.navigate('UserStack')
-}
-
 const HomeStack = () => {
     const [progress, setProgress] = React.useState(new Animated.Value(0));
     const scale = Animated.interpolate(progress, {
@@ -47,13 +35,6 @@ const HomeStack = () => {
 
     const animatedStyle = { borderRadius, transform: [{ scale }] };
     return (
-        // <Stack.Navigator
-        //     screenOptions={{
-        //         headerShown: false
-        //     }}
-        //     initialRouteName="Home">
-        //     <Stack.Screen name="Home" component={Home} />
-        // </Stack.Navigator>
         <LinearGradient style={{ flex: 1 }} colors={['#0093E9', '#36C2CF']}>
             <Drawer.Navigator
                 // hideStatusBar
@@ -88,10 +69,8 @@ const Screens = ({ navigation, style }) => {
                     headerTitle: "EduFund",
                     headerLeft: () => (
                         <TouchableOpacity
-                            //transparent
-                            style={{marginLeft:scale(20)}}
+                            style={{ marginLeft: scale(20) }}
                             onPress={() => navigation.openDrawer()}>
-                            {/* <Feather name="menu" size={18} color="black" style={{ paddingHorizontal: 10 }} /> */}
                             <Image
                                 style={{ width: scale(18), height: scale(18), borderWidth: 0, }}
                                 source={require('../assets/menu.png')}
@@ -134,27 +113,18 @@ const DrawerContent = props => {
                         resizeMode='contain' />}
                 />
 
-                <DrawerItem
+                {/* <DrawerItem
                     label="Logout"
                     labelStyle={{ color: '#000', fontSize: scale(20) }}
                     style={{ alignItems: 'flex-start', marginVertical: 0 }}
-                    onPress={() => Signout}
+                    onPress={() => props.navigation.navigate('Logout')}
                     icon={() => <Image
                         style={{ width: scale(18), height: scale(18), borderWidth: 0, }}
                         source={require('../assets/logout.png')}
                         resizeMode='contain' />}
-                />
+                /> */}
             </View>
 
-
-            {/* <Block flex={false}>
-          <DrawerItem
-            label="Logout"
-            labelStyle={{ color: 'white' }}
-            icon={() => <AntDesign name="logout" color="white" size={16} />}
-            onPress={() => alert('Are your sure to logout?')}
-          />
-        </Block> */}
         </DrawerContentScrollView>
     );
 };
@@ -174,7 +144,6 @@ function UserStack() {
 function App() {
     return (
         <NavigationContainer>
-            {/* <UserStack /> */}
             <Stack.Navigator
                 screenOptions={{
                     headerShown: false
@@ -185,14 +154,6 @@ function App() {
                 <Stack.Screen name="HomeStack" component={HomeStack} />
 
             </Stack.Navigator>
-            {/* <Stack.Navigator
-                screenOptions={{
-                    headerShown: false
-                  }}
-                initialRouteName="Signin">
-                <Stack.Screen name="Signin" component={Signin} />
-                <Stack.Screen name="Signup" component={Signup} />
-            </Stack.Navigator> */}
         </NavigationContainer>
     );
 }
@@ -208,8 +169,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.44,
         shadowRadius: 10.32,
         elevation: 5,
-        // overflow: 'scroll',
-        // borderWidth: 1,
     },
     drawerStyles: { flex: 1, width: '50%', backgroundColor: 'transparent' },
     drawerItem: { alignItems: 'flex-start', marginVertical: 0 },

@@ -61,32 +61,20 @@ class SplashScreen extends React.Component {
 
     render() {
         return (
-            <ImageBackground style={styles.imgBackground}
-                resizeMode='cover'
-                source={require('../../assets/Splash_Background.png')}>
-                <StatusBar hidden />
-
                 <View style={styles.container}>
                     <ImageLoader
-                        style={{ width: scale(298), height: scale(36), marginBottom: "70%" }}
-                        source={require("../../assets/VACCINELEDGER.png")}
-                        resizeMode='contain'
+                        style={{ width: scale(298), height: scale(200), marginBottom: "70%" }}
+                        source={require("../../assets/logo.jpg")}
+                        resizeMode="cover"
                     />
-
                     <View style={{ alignItems: "center", marginBottom: "10%" }}>
                         <View style={{ alignItems: 'center', }}>
                             <Text style={{ fontSize: scale(14), color: '#707070', fontFamily: "Roboto-Regular" }}>Powered By</Text>
-                            <Image
-                                style={{ width: scale(140), height: scale(24), borderWidth: 0, marginTop: verticalScale(8) }}
-                                source={require("../../assets/STATWIGLogo.png")}
-                                resizeMode='contain'
-                            />
                         </View>
-                        <Text style={{ color: "#707070", fontSize: scale(14), fontFamily: "Roboto-Regular", marginTop: verticalScale(8) }}>Version 1.00.200527.01</Text>
+                        <Text style={{ color: "#707070", fontSize: scale(14), fontFamily: "Roboto-Regular", marginTop: verticalScale(8) }}>Version 1.0</Text>
                     </View>
 
                 </View>
-            </ImageBackground>
         )
     }
 }

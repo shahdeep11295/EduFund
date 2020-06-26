@@ -24,10 +24,26 @@ class Signup extends React.Component {
         this.setState(state);
     }
 
+    validateEmail() {
+        let reg_email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        // /^([a-z0-9\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/;
+        // /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        return reg_email.test(this.state.email);
+    }
+    validatePassword() {
+        let reg_pwd = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+        return reg_pwd.test(this.state.password);
+    }
+
     registerUser = async () => {
         if (this.state.email === '' || this.state.password === '' || this.state.displayName == '' || this.state.Gender === '' || this.state.Age === '') {
             Alert.alert('Enter details to signup!')
-        } else {
+        } else if (!this.validateEmail()) {
+            Alert.alert('Email Incorrect. Please Try Again')
+        }else if (!this.validatePassword()) {
+            Alert.alert('Password contain: 1 capital letter, 1 number, 1 special character & a min of 8 characters')
+        }
+        else {
             const data = {
                 email: this.state.email,
                 password: this.state.password,
@@ -86,11 +102,10 @@ class Signup extends React.Component {
                     maxLength={15}
                     secureTextEntry={true}
                 />
-                <Button
-                    color="#3740FE"
-                    title="Signup"
-                    onPress={() => this.registerUser()}
-                />
+                <TouchableOpacity onPress={() => this.registerUser()}
+                style={{backgroundColor:"#3740FE",width: '100%',justifyContent:"center",alignItems:"center",height:scale(40)}}>
+                    <Text style={{color: '#FFF',}}>Signup</Text>
+                </TouchableOpacity>
 
                 <TouchableOpacity
                     onPress={() => this.props.navigation.navigate('Signin')}>
